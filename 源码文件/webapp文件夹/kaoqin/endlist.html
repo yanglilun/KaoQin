@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<script src="tool/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+	<style type="text/css">
+		button{
+			margin-top: 10px;
+		}
+	</style>
+	<body>
+		<form>
+		<input type="hidden" name="method" value="generateEnd" />
+		<h3 class="text-center text-success">生成总表</h3>
+		<hr >
+		<span class="text-center col-xs-4 col-xs-offset-1">选择起始周</span>
+		<span class="text-center col-xs-4 col-xs-offset-2">选择结束周</span>
+		<div class="col-xs-4 col-xs-offset-1">
+			<select class="form-control" name="start">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+			</select>
+		</div>
+		<div class="col-xs-4 col-xs-offset-2">
+			<select class="form-control" name="end">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+			</select>
+		</div>
+		<button id="sub" type="button" class="btn btn-success col-xs-8 col-xs-offset-2">一键生成</button>
+		<button id="download" style="display: none;" type="button" class="btn btn-info col-xs-8 col-xs-offset-2">下载文件</button>
+		<button onclick="history.go(-1)" type="button" class="btn btn-danger col-xs-8 col-xs-offset-2">返回</button>
+		</form>
+		<table id="tab" class="table table-striped table-bordered">
+			
+		</table>
+		<script type="text/javascript">
+			$(function(){
+				$('button#sub').on('click',function(){
+					// 重置table
+					$('table#tab').text("");
+					var head = $('<tr>');
+					head.append($('<th>').text('姓名'));
+					head.append($('<th>').text('周次'));
+					head.append($('<th>').text('迟到次数'));
+					head.append($('<th>').text('总次数'));
+					$('table#tab').append(head);
+					
+					
+					var f = $('form').serialize();
+					$.post('th',f,function(data){
+						var list = JSON.parse(data);
+						var name;
+						// 遍历list
+						for(var l of list){
+							// 新建tr
+							var tr = $('<tr>');
+							
+							// 新建td
+							// 判断名字是不是和上一个一样
+							if(l.sname != name){
+								var sname = $('<td>');
+								sname.text(l.sname);
+								sname.attr('rowspan',l.num);
+								tr.append(sname);
+							}
+							
+							var week = $('<td>');
+							week.text('第'+l.week+'周');
+							tr.append(week);
+							
+							var time = $('<td>');
+							time.text(l.time+'次');
+							tr.append(time);
+							// 判断名字是不是和上一个一样
+							if(l.sname != name){
+								var alltime = $('<td>');
+								alltime.text(l.alltime+'次');
+								alltime.attr('rowspan',l.num);
+								tr.append(alltime);
+								name=l.sname;
+							}
+							
+							$('table#tab').append(tr);
+						}
+					})
+					
+					$('button#download').css('display','block');
+				})
+				
+				$('button#download').on('click',function(){
+					var a = $('<a>');
+					a.attr('href','th?method=download');
+					a.get(0).click();
+				})
+			})
+			
+		</script>
+	</body>
+</html>

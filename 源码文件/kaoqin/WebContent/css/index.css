@@ -1,0 +1,34 @@
+div.root{
+			position: absolute;
+			top: 50%;
+			border: 1px solid black;
+			border-radius: 8px;
+			box-shadow: 5px 8px 8px rgba(0,0,0,0.3);
+		}
+		div.head{
+			position: relative;
+			width: 100%;
+			height: 15%;
+			border-bottom: 1px solid black;
+			box-sizing: border-box;
+		}
+		div.main{
+			position: relative;
+			width: 100%;
+			height: 80%;
+			box-sizing: border-box;
+		}
+		div.input{
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+		button#sub{
+			margin-top: 15px;
+			margin-bottom: 10px;
+		}
+		img.yzm{
+			display: block;
+			height: 40px;
+			width: 100px;
+			margin: 0 auto 0 auto;
+		}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/banwei.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script src="tool/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+	<body>
+		<div class="root col-xs-12">
+			<div class="bw-head">
+				<h1 class="text-center text-info">班委管理界面</h1>
+			</div>
+			<div class="bw-main">
+				<button class="btn btn-success" onclick="window.location='luru.jsp'">
+					<img src="img/录入.png" >
+					<span class="lab">录入考勤</span>
+				</button>
+				<button class="btn btn-warning" onclick="num()">
+					<img src="img/id.png" >
+					<span class="lab">管理编号</span>
+				</button>
+				<button class="btn btn-info" onclick="kaoqin()">
+					<img src="img/考勤.png" >
+					<span class="lab">查看本班考勤</span>
+				</button>
+				<button class="btn btn-info" onclick="window.location='apply.html'">
+					<img src="img/申请.png" >
+					<span class="lab">申请补签</span>
+				</button>
+				<button class="btn btn-warning" onclick="repassword()">
+					<img src="img/修改密码%20(1).png" >
+					<span class="lab">修改密码</span>
+				</button>
+				<button class="btn btn-danger" onclick="logout()">
+					<img src="img/注销.png" >
+					<span class="lab">退出登录</span>
+				</button>
+				
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(function(){
+				var height = window.innerHeight;
+				$('div.root').css('height',height);
+				$('div.root').css('margin-top',-height/2);
+			});
+			
+			function num(){
+				$.post('stu','method=shownum',function(data){
+					window.location=data;
+				})
+			}
+			
+			function kaoqin(){
+				window.location="kaoqin.jsp";
+			}
+			
+			function logout(){
+				if(confirm('确定退出？')){
+					$.post('stu','method=logout',function(data){
+						window.location="index.html";
+					});					
+				}
+			}
+			function repassword(){
+				window.location="repassword.html";
+			}
+		</script>
+	</body>
+</html>

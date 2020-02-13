@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="tool/donghua.css"/>
+		<script src="tool/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+		<style type="text/css">
+			input.yzm{
+				width: 100px;
+				margin: 5px auto 0 auto;
+			}
+		</style>
+	</head>
+	<body class="animated bounceIn">
+		<form autocomplete="off">
+		<input type="hidden" name="method" value="login">
+		<div class="root col-xs-10 col-xs-pull-1">
+			<div class="head text-center">
+				<h2>
+					<span class="text-info">考勤管理系统</span>
+				</h2>
+			</div>
+			<div class="main">
+				<div class="input col-xs-12">
+					<span class="col-xs-12 text-center text-info">
+						用户名
+					</span>
+					<input class="form-control" type="text" name="username" placeholder="请输入用户名"/>
+				</div>
+				<div class="input col-xs-12">
+					<span class="col-xs-12 text-center text-info">
+						密码
+					</span>
+					<input class="form-control" type="password" name="password"id="password" placeholder="请输入密码"/>
+				</div>
+				<img src="img/point.png" class="yzm">
+				<input name="key" type="text" class="yzm form-control" placeholder="验证码">
+				<button id="sub" type="button" class="btn col-xs-6 btn-success col-xs-push-3">登录</button>
+				
+			</div>
+		</div>			
+		</form>
+		<script type="text/javascript">
+			$(function(){
+				
+				$('div.root').css('margin-top','20%');
+				
+				$('#sub').on('click',function(){
+					if($('input[name=username]').val()==''){
+						alert('请输入用户名')
+						return;
+					}
+					if($('input[name=password]').val()==''){
+						alert('请输入密码');
+						return;
+					}
+					
+					var f = $('form').serialize();
+					$.post('stu',f,function(data){
+						if(data=='true'){
+							alert('登陆成功');
+							window.location="banwei.html";
+						}else if(data=="errorkey"){
+							alert('验证码错误')
+						}else{
+							alert('您没有权限哦~');
+						}
+					});
+				});
+				// 回车登陆
+				$('input.yzm').on('keydown',function(e){
+					if(e.keyCode=='13'){
+						$('button#sub').click()
+					}
+				})
+				
+				// 刷新验证码
+				$('img.yzm').on('click',function(){
+					$(this).attr('src','ValidateCode?r='+Math.random());
+				})
+			});
+		</script>
+	</body>
+</html>

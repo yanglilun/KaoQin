@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a,
+input,
+select,
+button{
+    outline: none;
+}
+a{
+    text-decoration: none;
+}
+ul,ol,li{
+    list-style: none;
+}
+img{
+    display: block;
+    border: 0;
+}
+th,td{
+    text-align: center;
+}

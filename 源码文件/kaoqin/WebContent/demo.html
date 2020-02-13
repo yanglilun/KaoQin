@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<script src="tool/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn" type="button" class="btn btn-success btn-block">按钮</button>
+		<script type="text/javascript">
+			$(function(){
+				var e=0;
+				$('button#btn').on("touchstart",function(event){
+					e = setTimeout(function(){
+						// 长按事件写这里
+						// 清除默认事件
+						event.preventDefault();
+					},1000);
+				});
+				
+				$('button#btn').on('touchend',function(event){
+					// 松开时清除定时器事件
+					clearTimeout(e);
+				});
+				
+				$('button#btn').on("click",function(event){
+					alert("click");
+				})
+				
+				
+				
+				
+				
+					
+				
+			})
+		</script>
+	</body>
+</html>

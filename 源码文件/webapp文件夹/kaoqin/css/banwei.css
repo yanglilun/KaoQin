@@ -1,0 +1,35 @@
+
+div.bw-head{
+	position: relative;
+	width: 100%;
+	height: 8%;
+	border-bottom: 1px dotted black;
+	box-sizing: border-box;
+}
+div.bw-main{
+	position: relative;
+	width: 100%;
+	height: 88%;
+	box-sizing: border-box;
+	overflow-y: scroll;
+}
+button.btn{
+	position: relative;
+	margin: 10px;
+	width: 143px;
+	height: 135px;
+	border: 1px solid black;
+	float: left;
+}
+button.btn:HOVER{
+	cursor: pointer;
+}
+button>img{
+	position: relative;
+	width: 80%;
+	height: 80%;
+}
+span.lab{
+	display: block;
+	
+}

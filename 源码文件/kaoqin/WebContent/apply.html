@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<script src="tool/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+		<style type="text/css">
+			select{
+				 height: 30px;
+				 border-radius: 3px;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="apply" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="method" id="method" value="apply" />
+		<div class="container">
+			<h3 class="text-center text-success">申请补签</h3>
+			<hr >
+			<div class="container col-xs-10 col-xs-offset-1">
+				<p class="col-xs-12 text-center text-info">补签学号</p>
+				<input type="text" name="sid" id="sid" required="required" placeholder="请输入要补签的学号" class="form-control"/>
+			</div>
+			<div class="container col-xs-10 col-xs-offset-1">
+				<p class="col-xs-12 text-center text-info">补签周次</p>
+				<select required="required" name="week" class="week col-xs-12">
+					<option value ="1">1</option>
+					<option value ="2">2</option>
+					<option value ="3">3</option>
+					<option value ="4">4</option>
+					<option value ="5">5</option>
+					<option value ="6">6</option>
+					<option value ="7">7</option>
+					<option value ="8">8</option>
+					<option value ="9">9</option>
+					<option value ="10">10</option>
+					<option value ="11">11</option>
+					<option value ="12">12</option>
+					<option value ="13">13</option>
+					<option value ="14">14</option>
+					<option value ="15">15</option>
+					<option value ="16">16</option>
+					<option value ="17">17</option>
+					<option value ="18">18</option>
+					<option value ="19">19</option>
+				</select>
+			</div>
+			<div class="container col-xs-10 col-xs-offset-1">
+				<p class="col-xs-12 text-center text-info">补签星期</p>
+				<select required="required" name="day" class="week col-xs-12">
+					<option value ="1">星期一</option>
+					<option value ="2">星期二</option>
+					<option value ="3">星期三</option>
+					<option value ="4">星期四</option>
+					<option value ="5">星期五</option>
+					<option value ="6">星期六</option>
+					<option value ="7">星期天</option>
+				</select>
+			</div>
+			<div class="container col-xs-10 col-xs-offset-1">
+				<p class="col-xs-12 text-center text-info">补签原因</p>
+				<input required="required" type="text" name="reason" id="reason" placeholder="请输入要补签的原因" class="form-control"/>
+			</div>
+			<div class="container col-xs-10 col-xs-offset-1">
+				<p class="col-xs-12 text-center text-danger">凭证</p>
+				<input type="file" name="pic" id="pic"/>
+			</div>
+			<button id="sub" class="btn btn-success col-xs-6 col-xs-offset-3" style="margin-top: 15px;">
+				提交
+			</button>
+			<button type="button" id="return" class="btn btn-danger col-xs-6 col-xs-offset-3" style="margin-top: 15px;">
+				返回
+			</button>
+		</div>
+		</form>
+		<script type="text/javascript">
+		$(function(){
+			// 返回
+			$('#return').on('click',function(){
+				history.go(-1);
+			})
+		})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<script src="tool/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+	<body>
+		<div class="container">
+		<form>
+			<input type="hidden" name="method" value="repassword" />
+			<h3 class="text-center text-danger">修改密码</h3>
+			<hr >
+			<p class="text-center text-success col-xs-12">新密码</p>
+			<div class="col-xs-10 col-xs-offset-1">
+				<input type="text" name="password" id="password" placeholder="请输入新密码" class="form-control"/>
+			</div>
+			<p class="text-center text-success col-xs-12">确认新密码</p>
+			<div class="col-xs-10 col-xs-offset-1">
+				<input type="password" name="repassword" id="repassword" placeholder="请确认新密码" class="form-control"/>
+			</div>
+			<button type="button" id="sub" class="btn btn-success col-xs-6 col-xs-offset-3" style="margin-top: 15px;">
+				提交
+			</button>
+			<button type="button" id="return" class="btn btn-danger col-xs-6 col-xs-offset-3" style="margin-top: 15px;">
+				返回
+			</button>
+			</form>
+		</div>
+		<script type="text/javascript">
+			$(function(){
+				$('button#sub').on('click',function(){
+					var password = $('input#password').val();
+					var repassword = $('input#repassword').val();
+					if(password==repassword){
+						var f = $('form').serialize();
+						$.post('th',f,function(data){
+							if(data=='true'){
+								alert('修改成功');
+								window.location="admin.html";
+							}else{
+								alert('修改失败');
+							}
+						})
+					}else{
+						alert('两次密码不相同');
+					}
+				})
+				
+				$('button#return').on('click',function(){
+					history.go(-1);
+				});
+			})
+		</script>
+	</body>
+</html>
