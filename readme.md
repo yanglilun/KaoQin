@@ -4,7 +4,7 @@
 
 ## 预览网站：
 
- http://by-shadow.cn/kaoqin/ 
+ http://by-shadow.cn/kaoqin/ (适配手机端)
 
 # 学生考勤管理系统
 
